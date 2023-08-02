@@ -26,7 +26,7 @@ layout: two-cols
 # Introduccion
 
 <!-- ![reference](/NoSQLDatabases.png) -->
-<img src="NoSQLDatabases.png" width="420"/>
+<img src="./public/NoSQLDatabases.png" width="420"/>
 
 </template>
 
