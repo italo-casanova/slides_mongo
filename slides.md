@@ -96,7 +96,7 @@ layout: two-cols
 
 Un registro en MongoDB es un documento, que es una estructura de datos compuesta por pares de campos y valores.
 Los valores de los campos pueden incluir otros documentos, arrays y arrays de documentos.
-![monogdbdatabase](crud-annotated-document.bakedsvg.svg)
+![monogdbdatabase](crud-annotated-document.png)
 
 [mongodb manual](https://www.mongodb.com/docs/manual/introduction/#document-database)
 
