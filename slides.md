@@ -26,7 +26,7 @@ layout: two-cols
 # Introduccion
 
 <!-- ![reference](/NoSQLDatabases.png) -->
-<img src="./public/NoSQLDatabases.png" width="420"/>
+<img src="/public/NoSQLDatabases.png" width="420"/>
 
 </template>
 
@@ -96,7 +96,9 @@ layout: two-cols
 
 Un registro en MongoDB es un documento, que es una estructura de datos compuesta por pares de campos y valores.
 Los valores de los campos pueden incluir otros documentos, arrays y arrays de documentos.
-![monogdbdatabase](crud-annotated-document.png)
+<!-- ![monogdbdatabase](crud-annotated-document.png) -->
+<img src="/public/crud-annotated-document.png"/>
+<!-- <img src="/public/NoSQLDatabases.png" width="420"/> -->
 
 [mongodb manual](https://www.mongodb.com/docs/manual/introduction/#document-database)
 
@@ -238,9 +240,11 @@ result = coleccion.insert_one(document)
 
 <br>
 
-![crud](crud.png)
+<!-- ![crud](crud.png) -->
+<img src="/public/crud.png" width="420"/>
 
 ---
 
-![crud](crud.webp)
+<!-- ![crud](crud.webp) -->
+<img src="/public/crud.webp" width="420"/>
 
