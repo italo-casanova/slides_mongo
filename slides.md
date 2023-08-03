@@ -16,10 +16,16 @@ layout: default
 
 # Contenidos
 
+* Introduccion
+* MongoDB
+* JSON
+* BSON
+* CRUD
+
+
 ---
 layout: two-cols
 ---
-
 
 <template v-slot:default>
 
@@ -38,7 +44,6 @@ layout: two-cols
 
 
 ---
-transition: slide-up
 layout: two-cols
 ---
 
@@ -118,6 +123,52 @@ Los valores de los campos pueden incluir otros documentos, arrays y arrays de do
 
 ---
 
+```js
+const { MongoClient } = require('mongodb');
+
+const url = 'mongodb://localhost:27017';
+
+const documentoJSON = {
+  nombre: 'Juan',
+  edad: 30,
+  activo: true
+};
+
+async function insertarDocumento() {
+  const client = new MongoClient(url);
+
+  try {
+  ...
+  ...
+    const resultado = await coleccion.insertOne(documentoJSON);
+    console.log('Documento insertado:', resultado.insertedId);
+  } catch (error) {
+    console.error('Error al insertar el documento:', error);
+  }
+}
+
+insertarDocumento();
+```
+
+---
+
+```python
+from pymongo import MongoClient
+
+client = MongoClient('localhost', 12345)
+db = client['collection']
+coleccion = db['collection']
+
+document = {
+    "nombre": "Juan",
+    "edad": 30,
+    "activo": True
+}
+
+result = coleccion.insert_one(document)
+```
+---
+
 # MongoDB
 
 ```
@@ -187,53 +238,33 @@ hello\x00                  // field name
 
 ```
 ---
-
-
-
-```js
-const { MongoClient } = require('mongodb');
-
-const url = 'mongodb://localhost:27017';
-
-const documentoJSON = {
-  nombre: 'Juan',
-  edad: 30,
-  activo: true
-};
-
-async function insertarDocumento() {
-  const client = new MongoClient(url);
-
-  try {
-  ...
-  ...
-    const resultado = await coleccion.insertOne(documentoJSON);
-    console.log('Documento insertado:', resultado.insertedId);
-  } catch (error) {
-    console.error('Error al insertar el documento:', error);
-  }
-}
-
-insertarDocumento();
-```
-
+layout: two-cols
 ---
 
-```python
-from pymongo import MongoClient
+<template v-slot:default>
 
-client = MongoClient('localhost', 12345)
-db = client['collection']
-coleccion = db['collection']
+# JSON VS BSON
 
-document = {
-    "nombre": "Juan",
-    "edad": 30,
-    "activo": True
-}
+* __Encoding:__ UTF-8 String
+* __Data:__ String, Boolean, Number, Array
+* __Human readable__
 
-result = coleccion.insert_one(document)
-```
+<!-- ![reference](/NoSQLDatabases.png) -->
+
+</template>
+
+<template v-slot:right>
+
+<br>
+<br>
+
+* __Encoding:__ Binary
+* __Data:__ String, Boolean, Number, (Integer, Long, ...)
+    Array, Date, Raw Binary
+* __Machine readable__
+
+</template>
+
 ---
 
 # Operaciones CRUD
@@ -241,10 +272,12 @@ result = coleccion.insert_one(document)
 <br>
 
 <!-- ![crud](crud.png) -->
-<img src="/public/crud.png" width="420"/>
+<img src="/public/crud.png" width="720"/>
 
 ---
 
 <!-- ![crud](crud.webp) -->
 <img src="/public/crud.webp" />
+
+
 
