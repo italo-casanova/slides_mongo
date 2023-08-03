@@ -246,5 +246,6 @@ result = coleccion.insert_one(document)
 ---
 
 <!-- ![crud](crud.webp) -->
-<img src="/public/crud.webp" width="420"/>
+<!-- <img src="/public/crud.webp" width="420"/> -->
+![hola](crud.webp)
 
