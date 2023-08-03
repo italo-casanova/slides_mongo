@@ -2,7 +2,7 @@
 theme: seriph
 class: text-center
 lineNumbers: false
-title: Welcome to Slidev
+title: Taller MongoDB
 ---
 
 # Taller de MongoDb
