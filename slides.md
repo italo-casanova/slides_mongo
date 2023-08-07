@@ -279,5 +279,57 @@ layout: two-cols
 <!-- ![crud](crud.webp) -->
 <img src="/public/crud.webp" />
 
+---
 
+# Insert
+
+```sql
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...); 
+```
+
+```js
+db.collection.insert(
+   <document or array of documents>,
+   {
+     writeConcern: <document>,
+     ordered: <boolean>
+   }
+)
+```
+
+```sql
+INSERT INTO table_name (column_list)
+VALUES
+    (value_list_1),
+    (value_list_2),
+    ...
+    (value_list_n);
+```
+
+```js
+db.collection.insertMany([
+      { item: "card", qty: 15 },
+      { item: "envelope", qty: 20 },
+      { item: "stamps" , qty: 30 }
+   ])
+```
+
+---
+
+# Find
+
+```js
+db.collection.find(query, projection, options)
+```
+
+## Operations 
+
+
+```sql
+SELECT * FROM table_name
+```
+```js
+db.collection.find()
+```
 
