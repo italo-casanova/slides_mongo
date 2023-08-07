@@ -5,7 +5,7 @@ lineNumbers: false
 title: Taller MongoDB
 ---
 
-# Taller de MongoDb
+# Taller de MongoDB
 
 sesion 1
 
