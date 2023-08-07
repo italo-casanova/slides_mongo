@@ -375,6 +375,37 @@ db.collection.find({ attribute: { innerAttribute1: "value1", innerAttribute2: "v
 db.collection.find({ attribute.innerAttribute: "value"} })
 ```
 
+---
 
+# Query Arrays
 
+## Exact Match
+
+```js
+db.collections.find( [ "value1", "value2" ] )
+```
+
+## All elements must be in Array
+
+```js
+db.collections.find( [ "value1", "value2" ] )
+```
+
+## Multiple criteria in Array Find
+
+```js
+db.collections.find( attribute: { $elementMatch: { $gt: value1, $lt: value2} } )
+```
+
+## Specific position in Array Find
+
+```js
+db.collections.find( { "attribute.0": "value" } )
+```
+
+## Array length Find
+
+```js
+db.collections.find( { attribute: { $size: integer } } )
+```
 
