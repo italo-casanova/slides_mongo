@@ -332,4 +332,49 @@ SELECT * FROM table_name
 ```js
 db.collection.find()
 ```
+```sql
+SELECT * FROM table_name WHERE field = "value":
+```
+```js
+db.collection.find({field: "value"})
+```
+```sql
+SELECT * FROM table_name WHERE field in ("value1", "value2");
+```
+```js
+db.collection.find({field: {"$in": ["value1", "value2"]} })
+```
+
+---
+
+## Using `AND` operator
+
+```js
+db.collection.find( {attribute1: "value1", attribute2: "value2"} )
+```
+
+
+## Using `OR` operator
+
+```js
+db.collection.find({field: {"$or": [ {attribute1: "value1" } , { attribute2: "value2" } ] } })
+```
+
+# Query Embedded Documents
+
+
+# Exact match 
+
+```js
+db.collection.find({ attribute: { innerAttribute1: "value1", innerAttribute2: "value2"} })
+```
+
+# Dot notation
+
+```js
+db.collection.find({ attribute.innerAttribute: "value"} })
+```
+
+
+
 
