@@ -50,7 +50,7 @@ layout: two-cols
 <template v-slot:default>
 
 
-<v-clicks>
+
 
 # Relacionales (SQL)
 
@@ -59,24 +59,23 @@ layout: two-cols
 - Una tabla no puede estar dentro de otra tabla
 - Una columna puede tener sólo un tipo de dato fijo
 
-</v-clicks>
+
 
 <br>
 <br>
 
-<v-click>
+
 
 
 ![sql](/sqltable.png)
 
 
-</v-click>
 
 </template>
 <template v-slot:right>
 
 
-<v-clicks>
+
 
 # No relacionales (No-SQL)
 
@@ -85,12 +84,9 @@ layout: two-cols
 - Cada colecion consta del nombre de una propiedad y su valor
 - Existen coleccines `embebidas`
 
-</v-clicks>
-<v-click>
 
 ![nosql2](/types-of-nosql-datastores.png)
 
-</v-click>
 
 
 </template>
