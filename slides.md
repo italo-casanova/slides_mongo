@@ -404,4 +404,14 @@ db.collections.find( { "attribute.0": "value" } )
 ```js
 db.collections.find( { attribute: { $size: integer } } )
 ```
+---
 
+# Configuracion de Atlas Cluster
+
+[registro](https://www.mongodb.com/cloud/atlas/register)
+
+---
+
+# Mongo compass
+
+[descarga](https://www.mongodb.com/products/compass)
