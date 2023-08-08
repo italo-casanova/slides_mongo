@@ -281,7 +281,7 @@ layout: two-cols
 
 ```sql
 INSERT INTO table_name (column1, column2, column3, ...)
-VALUES (value1, value2, value3, ...); 
+VALUES (value1, value2, value3, ...);
 ```
 
 ```js
@@ -319,7 +319,7 @@ db.collection.insertMany([
 db.collection.find(query, projection, options)
 ```
 
-## Operations 
+## Operations
 
 
 ```sql
@@ -359,7 +359,7 @@ db.collection.find({field: {"$or": [ {attribute1: "value1" } , { attribute2: "va
 # Query Embedded Documents
 
 
-# Exact match 
+# Exact match
 
 ```js
 db.collection.find({ attribute: { innerAttribute1: "value1", innerAttribute2: "value2"} })
@@ -410,8 +410,12 @@ db.collections.find( { attribute: { $size: integer } } )
 
 [registro](https://www.mongodb.com/cloud/atlas/register)
 
+<img src="/public/atlas.png"/>
+
 ---
 
 # Mongo compass
 
 [descarga](https://www.mongodb.com/products/compass)
+
+<img src="/public/compaas.webp"/>
