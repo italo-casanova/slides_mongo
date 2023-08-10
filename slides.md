@@ -473,10 +473,7 @@ db.condition.updateMany( {/**query**/}, {$set{attribute: value}} )
 ```js
 db.collection.deleteMany({ /** some query **/ })
 
-db.collection.deleteOne({ /** some query **/ }) // Delete all documents that match a specified filter.
-
-db.collection.remove({ /** some query **/ }) // Delete a single document or all documents that
-                                            //  match a specified filter.
+db.collection.deleteOne({ /** some query **/ })
 ```
 ---
 
