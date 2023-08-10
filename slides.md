@@ -419,3 +419,226 @@ db.collections.find( { attribute: { $size: integer } } )
 [descarga](https://www.mongodb.com/products/compass)
 
 <img src="/public/compaas.webp"/>
+
+---
+
+# Projection
+
+## Return Specific attribute
+
+```js
+db.collectiodb.find( {attribute1: "value1"}, {attribute1: 1, attribute2: 1} )
+```
+
+## Avoid _id
+
+```js
+db.collectiodb.find( {attribute1: "value1"}, {attribute1: 1, attribute2: 1, _id: 0} )
+```
+
+## All but avoid fields
+
+```js
+db.collectiodb.find( {attribute1: "value1"}, {attribute1: 0, attribute2: 0} )
+```
+
+---
+
+# Update
+
+## Operations
+
+``` sql
+UPDATE collection
+SET
+      <query>
+WHERE  condition
+
+```
+
+```js
+db.condition.update( {/**query**/}, {$set{attribute: value}} )
+db.condition.updateMany( {/**query**/}, {$set{attribute: value}} )
+```
+
+## Agreggation pipeline usage
+
+* `$set`
+* `$addField`
+
+---
+
+# Delete
+
+```js
+db.collection.deleteMany({ /** some query **/ })
+
+db.collection.deleteOne({ /** some query **/ }) // Delete all documents that match a specified filter.
+
+db.collection.remove({ /** some query **/ }) // Delete a single document or all documents that
+                                            //  match a specified filter.
+```
+---
+
+# Modelamiento
+
+## Metodologia
+
+<img src="/public/methodology.png" width="670"/>
+
+<style>
+img {
+  margin: auto;
+  display: block;
+}
+</style>
+
+---
+layout: two-cols
+---
+
+<template v-slot:default>
+
+# Patrones
+
+<br>
+
+## Embebido
+
+<!-- ![reference](/NoSQLDatabases.png) -->
+<img src="/public/embebed.png" width="420"/>
+
+</template>
+
+<template v-slot:right>
+
+<br>
+<br>
+<br>
+
+## Referenciado
+<img src="/public/referenced.png" width="420"/>
+
+</template>
+
+---
+
+# Relaciones
+
+## Comunes
+
+* One-to-One
+* One-to-Many
+* Many-to-Many
+
+
+---
+
+## Consideraciones
+
+No todas las relaciones de 1:1 y 1:many deben ser representadas en un único documento. Se debe utilizar referencias entre documentos cuando:
+
+* Un documento se lee con frecuencia pero contiene datos a los que rara vez se accede.
+* Una parte del documento se actualiza con frecuencia o está creciendo en tamaño, mientras que el resto del documento es relativamente estático.
+* Cuando el tamaño total del documento podría superar el límite de 16 MB de documentos de MongoDB.
+
+---
+layout: two-cols
+---
+
+<template v-slot:default>
+
+Tomemos el siguiente ejemplo de un fabricante con un conjunto de modelos en forma de array.
+
+Dado que los modelos a menudo se muestran de manera individual en lugar de como un conjunto,
+realizar consultas a los datos requeriría una transformación antes de ser mostrados.
+En este caso, tiene sentido mantener los modelos en su propia colección, haciendo referencia al fabricante en el documento.
+
+Los modelos de automóviles se utilizan frecuentemente fuera del documento principal. Moverlos a una colección diferente es útil si estamos leyendo o escribiendo regularmente en la colección de modelos.
+
+</template>
+
+<template v-slot:right>
+
+<img src="/public/modelado.png" width="520"/>
+
+</template>
+
+---
+layout: two-cols
+---
+
+<template v-slot:default>
+
+Duplicar (o redundar) permite evitar uniones innecesarias almacenando las mismas piezas de datos en varios documentos,
+a costa de cierta complejidad adicional, para mantenerlos consistentes y actualizados.
+
+MongoDB ofrece flujos de cambios y disparadores para ayudar a mantener sincronizados los datos duplicados en varios documentos.
+
+</template>
+
+<template v-slot:right>
+
+<img src="/public/duplica.png" width="520"/>
+
+</template>
+
+---
+
+# Index
+
+Los índices respaldan la ejecución eficiente de consultas. Sin ellos, la base de datos debe escanear cada documento
+en una colección o tabla para seleccionar aquellos que coinciden con la declaración de la consulta. Si existe un índice
+adecuado para una consulta, la base de datos puede utilizar el índice para limitar la cantidad de documentos que debe inspeccionar.
+
+La planificación de índices basada en tu carga de trabajo es importante para garantizar el rendimiento de tus consultas.
+
+## Covered Query
+
+Una consulta cubierta es una consulta que puede ser satisfecha completamente utilizando un índice y no necesita examinar ningún documento.
+Un índice cubre una consulta cuando se cumplen todas las siguientes condiciones:
+
+* todos los campos en la consulta son parte de un índice, y
+* todos los campos devueltos en los resultados están en el mismo índice.
+* ningún campo en la consulta es igual a nulo (es decir, {"campo": null} o {"campo": {$eq: null}}).
+
+---
+
+# Introduccion al aggregation framework
+
+Procesar y analizar registros de datos, agrupando valores de varios documentos y realizando operaciones en los datos agrupados para entregar resultados en un único conjunto.
+
+* Cada etapa realiza una operación en los documentos de entrada. Por ejemplo, una etapa puede filtrar documentos, agrupar documentos y calcular valores.
+* Los documentos que se generan como salida de una etapa son enviados a la siguiente etapa.
+* Una tubería de agregación puede devolver resultados para grupos de documentos. Por ejemplo, devolver los valores totales, promedio, máximo y mínimo.
+
+---
+
+# Agreggation Pipeline
+
+<img src="/public/pipeline.png" width="720"/>
+
+Usualmente son usadas para:
+
+* Agrupar valores de varios documentos juntos.
+* Realizar operaciones en los datos agrupados para devolver un único resultado.
+* Analizar cambios en los datos a lo largo del tiempo.
+
+<style>
+img {
+  margin: auto;
+  display: block;
+}
+</style>
+
+---
+# Single Purpose Aggregation Methods
+
+Agregan documentos de una sola colección. Estos métodos son simples pero carecen de las capacidades de una tubería de agregación.
+Method
+
+
+```js
+db.collection.count()
+```
+
